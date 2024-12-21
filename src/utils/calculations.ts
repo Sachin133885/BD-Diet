@@ -1,25 +1,26 @@
-// BMR calculation utility
-export const calculateBMR = (
-  weight: number,
-  height: number,
-  age: number,
-  gender: string
-): number => {
+// BMR calculation using Mifflin-St Jeor Equation
+export const calculateBMR = (weight: number, height: number, age: number, gender: string): number => {
   const base = 10 * weight + 6.25 * height - 5 * age;
   return gender.toLowerCase() === 'm' ? base + 5 : base - 161;
 };
 
-// TDEE calculation utility
+// TDEE calculation
 export const calculateTDEE = (bmr: number, activityLevel: string): number => {
-  const multipliers = {
+  const multipliers: Record<string, number> = {
     s: 1.2,  // Sedentary
     m: 1.55, // Moderate
     a: 1.75, // Active
   };
-  return bmr * (multipliers[activityLevel as keyof typeof multipliers] || 1.2);
+  return bmr * (multipliers[activityLevel] || 1.2);
 };
 
-// Macros calculation utility
+// BMI calculation
+export const calculateBMI = (weight: number, height: number): number => {
+  const heightInMeters = height / 100;
+  return weight / (heightInMeters * heightInMeters);
+};
+
+// Macros calculation
 export const calculateMacros = (
   tdee: number,
   goal: string,

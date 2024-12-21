@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useState } from 'react';
 import { calculateBMR, calculateTDEE, calculateMacros } from '../utils/calculations';
 import { getMealPlan } from '../utils/mealPlans';
 import type { MealPlan } from '../utils/mealPlans';
 import { Activity, Scale, User, Flame, Dumbbell, Apple } from 'lucide-react';
-import ResultCard from './ResultCard';
-import MacrosChart from './MacrosChart';
-import MealPlanCard from './MealPlanCard';
+import ResultCard from './shared/ResultCard';
+import MacrosChart from './shared/MacrosChart';
+import MealPlanCard from './shared/MealPlanCard';
 
 const Calculator = () => {
   const [formData, setFormData] = useState({
